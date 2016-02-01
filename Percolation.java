@@ -59,105 +59,105 @@ public class Percolation {
         if(i > 1 && i < size && j > 1 && j < size){
             // Check for open site upwards
             if(isOpen(i - gridIndexAdjustment - 1,j - gridIndexAdjustment) == true){
-                percolationTree.union(toUFIndex(size, i - gridIndexAdjustment - 1, j - gridIndexAdjustment), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                percolationTree.union(toUFIndex(i - gridIndexAdjustment - 1, j), toUFIndex(i - gridIndexAdjustment, j));    
             }
             // Check for open site downwards
             if(isOpen(i - gridIndexAdjustment + 1,j - gridIndexAdjustment) == true){
-                percolationTree.union(toUFIndex(size, i - gridIndexAdjustment + 1, j - gridIndexAdjustment), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                percolationTree.union(toUFIndex(i - gridIndexAdjustment + 1, j), toUFIndex(i - gridIndexAdjustment, j));    
             }
             // Check for open site to the left
             if(isOpen(i - gridIndexAdjustment,j - gridIndexAdjustment - 1) == true){
-                percolationTree.union(toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment - 1), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                percolationTree.union(toUFIndex(i - gridIndexAdjustment, j - 1), toUFIndex(i - gridIndexAdjustment, j));    
             }
             // Check for open site to the right
             if(isOpen(i - gridIndexAdjustment,j - gridIndexAdjustment + 1) == true){
-                percolationTree.union(toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment + 1), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                percolationTree.union(toUFIndex(i - gridIndexAdjustment, j + 1), toUFIndex(i - gridIndexAdjustment, j));    
             }
             
         }
         // Top row
         else if(i == 1){
             // Connect to top virual site
-           percolationTree.union(virtualSiteTopIndex, (toUFIndex(size, i - gridIndexAdjustment,j - gridIndexAdjustment)));
+           percolationTree.union(virtualSiteTopIndex, (toUFIndex(i - gridIndexAdjustment,j)));
             
             // Left top corner
             if(j == 1){
                 // Check for open site downwards
                  if(isOpen(i - gridIndexAdjustment + 1,j - gridIndexAdjustment) == true){
-                     percolationTree.union(toUFIndex(size, i - gridIndexAdjustment + 1, j - gridIndexAdjustment), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                     percolationTree.union(toUFIndex(i - gridIndexAdjustment + 1, j), toUFIndex(i - gridIndexAdjustment, j));    
                  }
                  // Check for open site to the right
                  if(isOpen(i - gridIndexAdjustment,j - gridIndexAdjustment + 1) == true){
-                     percolationTree.union(toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment + 1), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                     percolationTree.union(toUFIndex(i - gridIndexAdjustment, j + 1), toUFIndex(i - gridIndexAdjustment, j));    
                  }
             }
             // Right top corner
             else if(j == size){
                 // Check for open site to the left
                 if(isOpen(i - gridIndexAdjustment,j - gridIndexAdjustment - 1) == true){
-                    percolationTree.union(toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment - 1), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                    percolationTree.union(toUFIndex(i - gridIndexAdjustment, j - 1), toUFIndex(i - gridIndexAdjustment, j));    
                 }
                 // Check for open site downwards
                 if(isOpen(i - gridIndexAdjustment + 1,j - gridIndexAdjustment) == true){
-                    percolationTree.union(toUFIndex(size, i - gridIndexAdjustment + 1, j - gridIndexAdjustment), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                    percolationTree.union(toUFIndex(i - gridIndexAdjustment + 1, j), toUFIndex(i - gridIndexAdjustment, j));    
                 }
             }
             // In between top 
             else{
                 // Check for an open site downwards
                 if(isOpen(i - gridIndexAdjustment + 1,j - gridIndexAdjustment) == true){
-                    percolationTree.union(toUFIndex(size, i - gridIndexAdjustment + 1, j - gridIndexAdjustment), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                    percolationTree.union(toUFIndex(i - gridIndexAdjustment + 1, j), toUFIndex(i - gridIndexAdjustment, j));    
                  }
                 // Check for an open site to the right
                 if(isOpen(i - gridIndexAdjustment,j - gridIndexAdjustment + 1) == true){
-                     percolationTree.union(toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment + 1), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                     percolationTree.union(toUFIndex(i - gridIndexAdjustment, j + 1), toUFIndex(i - gridIndexAdjustment, j));    
                  }
                  // Check for an open site to the left
                 if(isOpen(i - gridIndexAdjustment,j - gridIndexAdjustment - 1) == true){
-                     percolationTree.union(toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment - 1), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                     percolationTree.union(toUFIndex(i - gridIndexAdjustment, j - 1), toUFIndex(i - gridIndexAdjustment, j));    
                  }   
             }
         }
         // Bottom row
         else if (i == size){
             // Connect to bottom virual site
-            percolationTree.union((size*size + 1), (toUFIndex(size, i - gridIndexAdjustment,j - gridIndexAdjustment)));
+            percolationTree.union((size*size + 1), (toUFIndex(i - gridIndexAdjustment, j)));
             
             // Left bottom corner
             if(j == 1){
                 // Check for open site upwards
                 if(isOpen(i - gridIndexAdjustment - 1,j - gridIndexAdjustment) == true){
-                    percolationTree.union(toUFIndex(size, i - gridIndexAdjustment - 1, j - gridIndexAdjustment), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                    percolationTree.union(toUFIndex(i - gridIndexAdjustment - 1, j), toUFIndex(i - gridIndexAdjustment, j));    
                 }
                 // Check for open site to the right
                 if(isOpen(i - gridIndexAdjustment,j - gridIndexAdjustment + 1) == true){
-                    percolationTree.union(toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment + 1), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                    percolationTree.union(toUFIndex(i - gridIndexAdjustment, j + 1), toUFIndex(i - gridIndexAdjustment, j));    
                 }
             }
             // Right bottom corner
             else if(j == size){
                 // Check for open site upwards
                 if(isOpen(i - gridIndexAdjustment - 1,j - gridIndexAdjustment) == true){
-                    percolationTree.union(toUFIndex(size, i - gridIndexAdjustment - 1, j - gridIndexAdjustment), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                    percolationTree.union(toUFIndex(i - gridIndexAdjustment - 1, j), toUFIndex(i - gridIndexAdjustment, j));    
                 }
                 // Check for an open site to the left
                 if(isOpen(i - gridIndexAdjustment,j - gridIndexAdjustment - 1) == true){
-                    percolationTree.union(toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment - 1), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                    percolationTree.union(toUFIndex(i - gridIndexAdjustment, j - 1), toUFIndex(i - gridIndexAdjustment, j));    
                 }   
             }
             // In between bottom 
             else{
                 // Check for open site upwards
                 if(isOpen(i - gridIndexAdjustment - 1,j - gridIndexAdjustment) == true){
-                    percolationTree.union(toUFIndex(size, i - gridIndexAdjustment - 1, j - gridIndexAdjustment), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                    percolationTree.union(toUFIndex(i - gridIndexAdjustment - 1, j), toUFIndex(i - gridIndexAdjustment, j));    
                 }
                  // Check for an open site to the left
                 if(isOpen(i - gridIndexAdjustment,j - gridIndexAdjustment - 1) == true){
-                    percolationTree.union(toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment - 1), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                    percolationTree.union(toUFIndex(i - gridIndexAdjustment, j - 1), toUFIndex(i - gridIndexAdjustment, j));    
                 }
                 // Check for open site to the right
                 if(isOpen(i - gridIndexAdjustment,j - gridIndexAdjustment + 1) == true){
-                    percolationTree.union(toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment + 1), toUFIndex(size, i - gridIndexAdjustment, j - gridIndexAdjustment));    
+                    percolationTree.union(toUFIndex(i - gridIndexAdjustment, j + 1), toUFIndex(i - gridIndexAdjustment, j));    
                 }
             }
         }
@@ -172,11 +172,11 @@ public class Percolation {
     }
     
     public boolean isFull(int i, int j){
-       return percolationTree.connected(virtualSiteTopIndex, toUFIndex(size,i,j));
+       return percolationTree.connected(virtualSiteTopIndex, toUFIndex(i - gridIndexAdjustment,j));
     }
     
     public boolean percolates(){
-        return percolationTree.connected(virtualSiteTopIndex, size);
+        return percolationTree.connected(virtualSiteTopIndex, size*size + 1);
     }
     
     public double getNumClosedSites(){
@@ -207,8 +207,8 @@ public class Percolation {
     }
     
     // Converts the grid 2d array index to an index for the 1d weighted union find array
-    private int toUFIndex(int size, int i, int j){
-        int ufIndex = ( (size * i + virtualSite ) + j);
+    private int toUFIndex(int i, int j){
+        int ufIndex = ( (size * i ) + j);
         return ufIndex;
     }
     
