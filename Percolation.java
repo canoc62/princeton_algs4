@@ -46,8 +46,12 @@ public class Percolation {
         throwIndexException(i,j);
         
         // Indices given are given in the convention such that (1,1) is the top left square (0,0) in the grid 2d array
+        if(isOpen(i,j)){
+            return;
+        }
+        
         grid[i - gridIndexAdjustment][j - gridIndexAdjustment] = open;
-        //closedSites = percolationTree.count();
+        
         if(i == 1) {
             percolationTree.union(virtualSiteTopIndex, toUFIndex(i,j));    
         }
@@ -71,119 +75,6 @@ public class Percolation {
         if(j < length && isOpen(i,j+1)) {
             percolationTree.union(toUFIndex(i,j), toUFIndex(i,j+1));
         }
-
-        
-
-
-
-
-        /*
-        // Non edges
-        if(i > 1 && i < length && j > 1 && j < length) {
-            // Check for open site upwards
-            if(isOpen(i-1,j) == true) {
-                percolationTree.union(toUFIndex(i - 1, j), toUFIndex(i, j));    
-            }
-            // Check for open site downwards
-            if(isOpen(i+1,j) == true) {
-                percolationTree.union(toUFIndex(i + 1, j), toUFIndex(i, j));    
-            }
-            // Check for open site to the left
-            if(isOpen(i,j-1) == true) {
-                percolationTree.union(toUFIndex(i, j - 1), toUFIndex(i, j));    
-            }
-            // Check for open site to the right
-            if(isOpen(i,j+1) == true) {
-                percolationTree.union(toUFIndex(i, j + 1), toUFIndex(i, j));    
-            }
-            
-        }
-        // Top row
-        else if(i == 1) {
-            // Connect to top virual site
-           percolationTree.union(virtualSiteTopIndex, (toUFIndex(i,j)));
-            
-            // Left top corner
-            if(j == 1) {
-                // Check for open site downwards
-                 if(isOpen(i+1,j) == true) {
-                     percolationTree.union(toUFIndex(i + 1, j), toUFIndex(i, j));    
-                 }
-                 // Check for open site to the right
-                 if(isOpen(i,j+1) == true) {
-                     percolationTree.union(toUFIndex(i, j + 1), toUFIndex(i, j));    
-                 }
-            }
-            // Right top corner
-            else if(j == length) {
-                // Check for open site to the left
-                if(isOpen(i,j-1) == true) {
-                    percolationTree.union(toUFIndex(i, j - 1), toUFIndex(i, j));    
-                }
-                // Check for open site downwards
-                if(isOpen(i+1,j) == true) {
-                    percolationTree.union(toUFIndex(i + 1, j), toUFIndex(i, j));    
-                }
-            }
-            // In between top 
-            else {
-                // Check for an open site downwards
-                if(isOpen(i+1,j) == true) {
-                    percolationTree.union(toUFIndex(i + 1, j), toUFIndex(i, j));    
-                 }
-                // Check for an open site to the right
-                if(isOpen(i,j+1) == true) {
-                    percolationTree.union(toUFIndex(i, j + 1), toUFIndex(i, j));    
-                 }
-                 // Check for an open site to the left
-                if(isOpen(i,j-1) == true) {
-                    percolationTree.union(toUFIndex(i, j - 1), toUFIndex(i, j));    
-                 }   
-            }
-        }
-        // Bottom row
-        else if (i == length) {
-            // Connect to bottom virual site
-            percolationTree.union(virtualSiteBotIndex, (toUFIndex(i, j)));
-            
-            // Left bottom corner
-            if(j == 1) {
-                // Check for open site upwards
-                if(isOpen(i-1,j) == true) {
-                    percolationTree.union(toUFIndex(i - 1, j), toUFIndex(i, j));    
-                }
-                // Check for open site to the right
-                if(isOpen(i,j+1) == true) {
-                    percolationTree.union(toUFIndex(i, j + 1), toUFIndex(i, j));    
-                }
-            }
-            // Right bottom corner
-            else if(j == length) {
-                // Check for open site upwards
-                if(isOpen(i- 1,j) == true) {
-                    percolationTree.union(toUFIndex(i - 1, j), toUFIndex(i, j));    
-                }
-                // Check for an open site to the left
-                if(isOpen(i,j-1) == true) {
-                    percolationTree.union(toUFIndex(i, j - 1), toUFIndex(i, j));    
-                }   
-            }
-            // In between bottom 
-            else {
-                // Check for open site upwards
-                if(isOpen(i-1,j) == true) {
-                    percolationTree.union(toUFIndex(i - 1, j), toUFIndex(i, j));    
-                }
-                 // Check for an open site to the left
-                if(isOpen(i,j-1) == true) {
-                    percolationTree.union(toUFIndex(i, j - 1), toUFIndex(i, j));    
-                }
-                // Check for open site to the right
-                if(isOpen(i,j+1) == true) {
-                    percolationTree.union(toUFIndex(i, j + 1), toUFIndex(i, j));    
-                }
-            }
-        }*/
        
     }
     
