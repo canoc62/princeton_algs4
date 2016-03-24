@@ -14,13 +14,12 @@ public class PercolationStats {
         fractionOpenSites = new double[numOfExperiments];
         
         int numSites = lengthOfGridSide*lengthOfGridSide;
-        
-        int numOpenSites = 0;
-        
+
         for(int i = 0; i < numOfExperiments; i++){
             
             Percolation grid = new Percolation(lengthOfGridSide);
-            
+            int numOpenSites = 0;
+
             while(true){
                 int a = StdRandom.uniform(1, lengthOfGridSide + 1);
                 int b = StdRandom.uniform(1, lengthOfGridSide + 1);
